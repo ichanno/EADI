@@ -1,0 +1,2 @@
+# EADI
+Mff masih pemula 🙏
