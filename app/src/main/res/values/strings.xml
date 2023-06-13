@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">EADI</string>
+    <string name="title_home">Home</string>
+    <string name="title_article">Article</string>
+    <string name="title_history">History</string>
+    <string name="title_profile">Profile</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--login-->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account? </string>
+    <string name="register">Register</string>
+    <string name="already_have_an_Account">Already have an account? </string>
+    <string name="signin">Sign In</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="enter_a_valid_email">Enter a valid email</string>
+    <string name="password_must_be_filled">Password must be filled</string>
+    <string name="minimum_8_characters">Password of at least 8 characters</string>
+</resources>
