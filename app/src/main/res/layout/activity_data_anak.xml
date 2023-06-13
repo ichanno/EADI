@@ -7,7 +7,7 @@
     android:background="#B5E8FB">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_logo"
             android:layout_width="48dp"
             android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
             app:srcCompat="@drawable/ic_logo" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -49,7 +49,7 @@
         app:layout_constraintGuide_begin="250dp" />
 
     <ImageView
-        android:id="@+id/iv_rectangle1"
+        android:id="@+id/iv_rectangle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_background_data_anak"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -68,10 +68,10 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tv_title_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -83,10 +83,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <EditText
-        android:id="@+id/ed_register_name"
+        android:id="@+id/ed_child_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -102,25 +102,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
-    <EditText
-        android:id="@+id/ed_register_email"
+    <Spinner
+        android:id="@+id/spinner_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:drawablePadding="8dp"
-        android:hint="Gender"
-        android:inputType="text"
         android:padding="16dp"
+        android:hint="Gender"
         android:textColor="@color/black"
+        android:entries="@array/gender_options"
+        android:prompt="Gender"
+        android:spinnerMode="dropdown"
         app:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_name" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_child_name" />
 
     <EditText
-        android:id="@+id/ed_register_birth"
+        android:id="@+id/ed_child_birth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -134,20 +135,20 @@
         app:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_email" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_gender" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/redirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_birth">
+        app:layout_constraintTop_toBottomOf="@+id/ed_child_birth">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/tv_redirect_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already filled this form ?"
@@ -155,7 +156,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/tv_redirect_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -166,16 +167,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:text="Submit"
+        android:backgroundTint="#1363DF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/redirect" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,4 +34,10 @@
     <string name="enter_a_valid_email">Enter a valid email</string>
     <string name="password_must_be_filled">Password must be filled</string>
     <string name="minimum_8_characters">Password of at least 8 characters</string>
+
+    <!--gender-option-->
+    <string-array name="gender_options">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
 </resources>
