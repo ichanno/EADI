@@ -7,7 +7,7 @@
     android:background="#B5E8FB">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ll_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -17,29 +17,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_logo"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_logo" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="EADI"
             android:textColor="@color/black"
             android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            android:textStyle="bold" />
 
     </LinearLayout>
-
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -49,7 +42,7 @@
         app:layout_constraintGuide_begin="150dp" />
 
     <ImageView
-        android:id="@+id/iv_rectangle1"
+        android:id="@+id/iv_rectangle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_background_data_anak"
@@ -58,7 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -68,10 +61,10 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_logo" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/ll_instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -82,7 +75,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/iv_instruction1"
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:layout_marginTop="8dp"
@@ -92,7 +85,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/tv_instruction1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Example of a Correct Photo"
@@ -100,7 +93,7 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/iv_instruction2"
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:layout_marginTop="36dp"
@@ -110,7 +103,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv_instruction2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Example of a Wrong Photo"
@@ -119,7 +112,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -128,7 +121,7 @@
         android:text="Continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_instruction" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

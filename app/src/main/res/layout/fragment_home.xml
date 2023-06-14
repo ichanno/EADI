@@ -17,7 +17,7 @@
             app:layout_constraintGuide_begin="200dp" />
 
         <ImageView
-            android:id="@+id/iv_rectangle2"
+            android:id="@+id/iv_rectangle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_background_home"
@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/ll_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -36,30 +36,25 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/iv_logo"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_logo" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tv_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="EADI"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -69,10 +64,10 @@
             android:textSize="23sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_logo" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tv_title_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -80,10 +75,10 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/iv_home"
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:layout_marginTop="32dp"
@@ -93,7 +88,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/myRectangleView"
+            android:id="@+id/tv_desc"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_marginTop="16dp"
@@ -104,7 +99,7 @@
             android:background="@drawable/rectangle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_home" />
 
         <ProgressBar
             android:id="@+id/progress_bar"

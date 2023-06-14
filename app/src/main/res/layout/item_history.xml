@@ -8,7 +8,6 @@
     android:background="@drawable/rectangle_history">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/iv_user"
         android:layout_width="72dp"
         android:layout_height="72dp"
@@ -19,7 +18,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -29,49 +28,49 @@
         app:layout_constraintStart_toEndOf="@+id/iv_user"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25"
-        tools:text="TextView" />
+        tools:text="Gracias Manggis" />
 
     <TextView
-        android:id="@+id/tv_url"
+        android:id="@+id/tv_birthdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
         app:layout_constraintStart_toEndOf="@+id/iv_user"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username"
-        tools:text="TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        tools:text="19 April 2013" />
 
     <TextView
-        android:id="@+id/articleReadDurationTextView2"
+        android:id="@+id/tv_verdict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        tools:text="Normal"
+        app:layout_constraintStart_toEndOf="@+id/iv_user"
+        app:layout_constraintTop_toBottomOf="@+id/tv_birthdate" />
+
+    <TextView
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
-        android:text="8 mins to read"
+        tools:text="20 May 2023"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/iv_user"
-        app:layout_constraintTop_toBottomOf="@+id/tv_url" />
-
-    <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
-        android:text="TextView"
+        tools:text="Girl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

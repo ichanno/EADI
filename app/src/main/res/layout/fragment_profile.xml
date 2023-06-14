@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ll_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -16,25 +16,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_logo"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_logo" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="EADI"
             android:textColor="@color/black"
             android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -45,7 +40,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/ll_logo"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -60,7 +55,7 @@
         tools:text="TextView" />
 
     <TextView
-        android:id="@+id/tv_url"
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -71,14 +66,14 @@
         tools:text="TextView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/iv_user"
-        app:layout_constraintTop_toBottomOf="@+id/tv_url" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
 
 <!--    <Button-->
 <!--        android:id="@+id/button3"-->
@@ -123,7 +118,7 @@
 <!--            tools:layout_editor_absoluteY="299dp" />-->
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btn_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Manage Account"
@@ -134,7 +129,7 @@
             tools:layout_editor_absoluteY="372dp" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btn_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="About Us"
@@ -145,7 +140,7 @@
             tools:layout_editor_absoluteY="450dp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btn_disclaimer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Disclaimer"

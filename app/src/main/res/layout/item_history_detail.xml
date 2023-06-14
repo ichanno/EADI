@@ -9,7 +9,7 @@
     android:background="@drawable/rectangle_history_detail">
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -19,31 +19,46 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="TextView" />
+        tools:text="20 April 2023" />
 
-    <TextView
-        android:id="@+id/tv_url"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:orientation="horizontal"
         android:layout_marginTop="8dp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username"
-        tools:text="TextView" />
-
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_url"
-        tools:text="TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_date">
+
+        <TextView
+            android:id="@+id/tv_verdict_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:text="Face Detection :" />
+
+        <TextView
+            android:id="@+id/tv_verdict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:text="Normal" />
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_verdict"-->
+<!--        tools:text="TextView" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

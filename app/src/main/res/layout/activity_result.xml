@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/myRectangleView"
+        android:id="@+id/iv_rectangle"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
@@ -23,9 +23,9 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
-        app:layout_constraintStart_toStartOf="@+id/myRectangleView"
-        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toEndOf="@+id/iv_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/iv_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/iv_rectangle"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -36,8 +36,8 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
-        app:layout_constraintStart_toStartOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toEndOf="@+id/iv_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/iv_rectangle"
         app:layout_constraintTop_toBottomOf="@+id/iv_user"
         tools:text="TextView" />
 
@@ -48,8 +48,8 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
-        app:layout_constraintStart_toStartOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toEndOf="@+id/iv_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/iv_rectangle"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
         tools:text="TextView" />
 
@@ -60,13 +60,13 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
-        app:layout_constraintStart_toStartOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toEndOf="@+id/iv_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/iv_rectangle"
         app:layout_constraintTop_toBottomOf="@+id/tv_gender"
         tools:text="TextView" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tv_verdict_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -76,10 +76,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_rectangle" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/tv_verdict"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -87,9 +87,9 @@
         android:textColor="#FF0000"
         android:textColorHint="#FF0000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_verdict_desc"
+        app:layout_constraintStart_toStartOf="@+id/tv_verdict_desc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_verdict_desc" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
