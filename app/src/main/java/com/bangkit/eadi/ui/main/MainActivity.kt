@@ -1,14 +1,15 @@
 package com.bangkit.eadi.ui.main
 
+import android.R
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.bangkit.eadi.R
 import com.bangkit.eadi.databinding.ActivityMainBinding
+import com.bangkit.eadi.ui.about.AboutActivity
+import com.bangkit.eadi.ui.disclaimer.DisclaimerActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,20 +21,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        // Set click listener for iv_camera
+        binding.ivCamera.setOnClickListener {
+            val intent = Intent(this, DisclaimerActivity::class.java)
+            startActivity(intent)
+        }
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home,
-//                R.id.navigation_article,
-                R.id.navigation_history,
-                R.id.navigation_profile
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        // Set click listener for iv_about
+        binding.ivAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
