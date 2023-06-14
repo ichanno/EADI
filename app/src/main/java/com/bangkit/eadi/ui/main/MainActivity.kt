@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set click listener for iv_camera
-        binding.ivCamera.setOnClickListener {
+        binding.llCamera.setOnClickListener {
             val intent = Intent(this, DisclaimerActivity::class.java)
             startActivity(intent)
         }

@@ -13,7 +13,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools/>
+        tools:text="1"/>
 
     <TextView
         android:id="@+id/tv_instruction"
@@ -22,6 +22,7 @@
         android:layout_weight="1"
         android:layout_marginStart="12dp"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        tools:text="Make sure the surrounding environment is quiet and minimal distractions."/>
 
 </LinearLayout>
