@@ -1,2 +1,2 @@
-# EADI
-Mff masih pemula 🙏
+# EADI (Over)Simplified Version
+- MVP only
