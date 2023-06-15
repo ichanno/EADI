@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import com.bangkit.eadi.R
 import com.bangkit.eadi.databinding.ActivityCameraBinding
 import com.bangkit.eadi.ui.utils.createFile
+
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -34,6 +35,8 @@ class CameraActivity : AppCompatActivity() {
 
         setupClickListeners()
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        startCamera()
     }
 
     private fun setupClickListeners() {
@@ -69,12 +72,12 @@ class CameraActivity : AppCompatActivity() {
 
         imageCapture.takePicture(
             outputOptions,
-            ContextCompat.getMainExecutor(this),
+            cameraExecutor,
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val intent = Intent().apply {
-                        putExtra("imageUri", savedUri)
+                        putExtra("imageUri", savedUri.toString())
                     }
                     setResult(RESULT_OK, intent)
                     finish()
@@ -90,6 +93,7 @@ class CameraActivity : AppCompatActivity() {
             }
         )
     }
+
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
