@@ -1,24 +1,29 @@
 package com.bangkit.eadi.ui.camera
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bangkit.eadi.R
 import com.bangkit.eadi.databinding.ActivityCameraBinding
 import com.bangkit.eadi.ui.utils.createFile
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 class CameraActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityCameraBinding
+    private lateinit var cameraExecutor: ExecutorService
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
 
@@ -28,6 +33,7 @@ class CameraActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupClickListeners()
+        cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
     private fun setupClickListeners() {
@@ -36,7 +42,7 @@ class CameraActivity : AppCompatActivity() {
         }
         binding.switchCamera.setOnClickListener {
             cameraSelector =
-                if (cameraSelector.equals(CameraSelector.DEFAULT_BACK_CAMERA)) CameraSelector.DEFAULT_FRONT_CAMERA
+                if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) CameraSelector.DEFAULT_FRONT_CAMERA
                 else CameraSelector.DEFAULT_BACK_CAMERA
             startCamera()
         }
@@ -45,26 +51,32 @@ class CameraActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         hideSystemUI()
-        startCamera()
+        if (allPermissionsGranted()) {
+            startCamera()
+        } else {
+            ActivityCompat.requestPermissions(
+                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
+        }
     }
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
+
         val photoFile = createFile(application)
+
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+
         imageCapture.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                    val savedUri = Uri.fromFile(photoFile)
                     val intent = Intent().apply {
-                        putExtra("picture", photoFile)
-                        putExtra(
-                            "isBackCamera",
-                            cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
-                        )
+                        putExtra("imageUri", savedUri)
                     }
-                    setResult(AddStoryActivity.CAMERA_X_RESULT, intent)
+                    setResult(RESULT_OK, intent)
                     finish()
                 }
 
@@ -75,7 +87,6 @@ class CameraActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
         )
     }
@@ -85,6 +96,7 @@ class CameraActivity : AppCompatActivity() {
 
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+
             val preview = Preview.Builder()
                 .build()
                 .also {
@@ -95,13 +107,8 @@ class CameraActivity : AppCompatActivity() {
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
-                    this,
-                    cameraSelector,
-                    preview,
-                    imageCapture
-                )
-            } catch (e: Exception) {
+                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
+            } catch (exception: Exception) {
                 Toast.makeText(
                     this@CameraActivity,
                     getString(R.string.failed_to_open_camera),
@@ -109,6 +116,10 @@ class CameraActivity : AppCompatActivity() {
                 ).show()
             }
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun hideSystemUI() {
@@ -122,5 +133,15 @@ class CameraActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
+    }
+
+    companion object {
+        private const val REQUEST_CODE_PERMISSIONS = 10
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
     }
 }

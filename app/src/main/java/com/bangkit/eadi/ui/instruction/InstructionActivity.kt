@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.eadi.databinding.ActivityInstructionBinding
-import com.bangkit.eadi.ui.camera.CameraSelectionActivity
 
 class InstructionActivity : AppCompatActivity() {
 
@@ -32,7 +31,7 @@ class InstructionActivity : AppCompatActivity() {
 
         // Set click listener for btn_continue
         binding.btnContinue.setOnClickListener {
-            val intent = Intent(this, CameraSelectionActivity::class.java)
+            val intent = Intent(this, PhotoInstructionActivity::class.java)
             startActivity(intent)
         }
     }
