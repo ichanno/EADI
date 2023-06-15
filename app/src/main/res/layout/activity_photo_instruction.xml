@@ -65,9 +65,10 @@
 
     <LinearLayout
         android:id="@+id/ll_instruction"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:padding="24dp"
         android:layout_marginTop="48dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,13 +77,12 @@
 
         <ImageView
             android:id="@+id/iv_instruction1"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/ic_correct" />
 
         <TextView
             android:id="@+id/tv_instruction1"
@@ -94,13 +94,12 @@
 
         <ImageView
             android:id="@+id/iv_instruction2"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/ic_wrong" />
 
         <TextView
             android:id="@+id/tv_instruction2"
@@ -119,6 +118,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:text="Continue"
+        android:backgroundTint="#1363DF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_instruction" />

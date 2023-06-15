@@ -101,24 +101,29 @@
         android:focusable="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
-        <ImageView
-            android:id="@+id/iv_camera"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_camera" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="270dp"
+            android:layout_height="180dp"
+            app:cardCornerRadius="8dp"
+            android:elevation="10dp">
+            <ImageView
+                   android:id="@+id/iv_camera"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/ic_scan" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Open My Camera"
-            android:textColor="@color/black"
+            android:text="Analyze Your Kid"
+            android:textColor="#1363DF"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -126,13 +131,15 @@
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="350dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:background="@drawable/rectangle"
         android:padding="16dp"
+        android:justificationMode="inter_word"
+        android:lineSpacingExtra="8sp"
         android:text="This application is designed specifically for children between the ages of 2 up to 14 years old, and it has a high accuracy rate of up to 90%"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_camera" />
