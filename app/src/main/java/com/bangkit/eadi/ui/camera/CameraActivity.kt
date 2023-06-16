@@ -33,10 +33,9 @@ class CameraActivity : AppCompatActivity() {
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupClickListeners()
         cameraExecutor = Executors.newSingleThreadExecutor()
 
-        startCamera()
+        setupClickListeners()
     }
 
     private fun setupClickListeners() {
@@ -65,22 +64,19 @@ class CameraActivity : AppCompatActivity() {
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
-
         val photoFile = createFile(application)
-
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-
         imageCapture.takePicture(
             outputOptions,
-            cameraExecutor,
+            ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(photoFile)
-                    val intent = Intent().apply {
-                        putExtra("imageUri", savedUri.toString())
+                    val photoUri = outputFileResults.savedUri ?: Uri.fromFile(photoFile)
+                    val intent = Intent(this@CameraActivity, PreviewActivity::class.java).apply {
+                        putExtra("photoUri", photoUri.toString())
+                        putExtra("isCameraPhoto", true)
                     }
-                    setResult(RESULT_OK, intent)
-                    finish()
+                    startActivity(intent)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -100,7 +96,6 @@ class CameraActivity : AppCompatActivity() {
 
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-
             val preview = Preview.Builder()
                 .build()
                 .also {
@@ -111,8 +106,13 @@ class CameraActivity : AppCompatActivity() {
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
-            } catch (exception: Exception) {
+                cameraProvider.bindToLifecycle(
+                    this,
+                    cameraSelector,
+                    preview,
+                    imageCapture
+                )
+            } catch (e: Exception) {
                 Toast.makeText(
                     this@CameraActivity,
                     getString(R.string.failed_to_open_camera),
@@ -121,6 +121,7 @@ class CameraActivity : AppCompatActivity() {
             }
         }, ContextCompat.getMainExecutor(this))
     }
+
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED

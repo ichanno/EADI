@@ -139,10 +139,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_instructions"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="24dp"
             android:padding="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_continue"
+            app:layout_constraintDimensionRatio="H,3:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline" />

@@ -4,6 +4,7 @@
     <string name="failed_to_take_picture">Failed to take picture</string>
     <string name="failed_to_open_camera">Failed to open camera</string>
     <string name="choose_a_picture">Choose a picture</string>
+    <string name="failed_to_get_permission">Failed to get permission</string>
 
 
 </resources>
