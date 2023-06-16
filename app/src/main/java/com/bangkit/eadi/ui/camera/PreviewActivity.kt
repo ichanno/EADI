@@ -1,6 +1,7 @@
 package com.bangkit.eadi.ui.camera
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.net.Uri
@@ -10,6 +11,16 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.exifinterface.media.ExifInterface
 import com.bangkit.eadi.databinding.ActivityPreviewBinding
+import com.bangkit.eadi.ui.apihelper.ApiClient
+import com.bangkit.eadi.ui.apihelper.ApiResponse
+import com.bangkit.eadi.ui.result.ResultActivity
+import com.bangkit.eadi.ui.utils.uriToFile
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
 
 class PreviewActivity : AppCompatActivity() {
@@ -28,7 +39,6 @@ class PreviewActivity : AppCompatActivity() {
         loadImage()
 
         binding.btnUpload.setOnClickListener {
-            // Handle the upload action here
             uploadImage(imageUri)
         }
 
@@ -78,7 +88,37 @@ class PreviewActivity : AppCompatActivity() {
     }
 
     private fun uploadImage(imageUri: Uri) {
-        // Implement the upload logic here
-        // You can use the imageUri to access the selected image and upload it to a server or perform other operations
+        val apiService = ApiClient.create()
+        val file = uriToFile(imageUri, this)
+
+        if (file != null) {
+            val reqImgFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "image", file.name, reqImgFile
+            )
+
+            val call: Call<ApiResponse> = apiService.uploadImage(imageMultipart)
+            call.enqueue(object : Callback<ApiResponse> {
+                override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                    if (response.isSuccessful) {
+                        val predictedLabel = response.body()?.predictedLabel
+                        val intent = Intent(this@PreviewActivity, ResultActivity::class.java)
+                        intent.putExtra("verdict", predictedLabel)
+                        startActivity(intent)
+                    } else {
+                        // Handle error response
+                        val errorMessage = response.message()
+                        // You can handle the error based on the response code or message
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                    // Handle network failure
+                    t.printStackTrace()
+                }
+            })
+        }
     }
+
+
 }

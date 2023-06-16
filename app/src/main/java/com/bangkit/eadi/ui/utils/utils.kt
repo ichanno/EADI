@@ -1,5 +1,6 @@
 package com.bangkit.eadi.ui.utils
 
+import android.app.Activity
 import android.app.Application
 import android.content.ContentResolver
 import android.content.Context
@@ -8,6 +9,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import android.provider.MediaStore
 import com.bangkit.eadi.R
 import java.io.*
 import java.text.SimpleDateFormat
@@ -49,20 +51,16 @@ fun rotateFile(file: File, isBackCamera: Boolean = false) {
     result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
 }
 
-fun uriToFile(selectedImg: Uri, context: Context): File {
-    val contentResolver: ContentResolver = context.contentResolver
-    val myFile = createCustomTempFile(context)
-
-    val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
-    val outputStream: OutputStream = FileOutputStream(myFile)
-    val buf = ByteArray(1024)
-    var len: Int
-    while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-    outputStream.close()
-    inputStream.close()
-
-    return myFile
+fun uriToFile(uri: Uri, activity: Activity): File {
+    val projection = arrayOf(MediaStore.Images.Media.DATA)
+    val cursor = activity.contentResolver.query(uri, projection, null, null, null)
+    val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+    cursor?.moveToFirst()
+    val filePath = cursor?.getString(columnIndex!!)
+    cursor?.close()
+    return File(filePath)
 }
+
 
 fun reduceImageSize(file: File): File {
     val bitmap = BitmapFactory.decodeFile(file.path)

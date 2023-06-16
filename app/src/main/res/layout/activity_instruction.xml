@@ -4,10 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B5E8FB">
+    android:background="#FFFFFF">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_rectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_instruction_bg"
+            android:layout_marginTop="-8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/ll_logo"
@@ -37,21 +48,6 @@
 
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="150dp" />
-
-        <ImageView
-            android:id="@+id/iv_rectangle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_background_instruction"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -66,88 +62,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_logo" />
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/ll_instruction"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="56dp"-->
-<!--            android:orientation="vertical"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/guideline">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_instruction1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="36dp"-->
-<!--                android:layout_marginEnd="36dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="12dp"-->
-<!--                android:text="Make sure the surrounding environment is quiet and minimal distractions."-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_instruction2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="36dp"-->
-<!--                android:layout_marginEnd="36dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="12dp"-->
-<!--                android:text="Choose a location that is comfortable for the child, with sufficient but not too bright lighting."-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_instruction3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="36dp"-->
-<!--                android:layout_marginEnd="36dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="12dp"-->
-<!--                android:text="Make sure the camera or device used is working properly and is in photo-taking mode."-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_instruction4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="36dp"-->
-<!--                android:layout_marginEnd="36dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="12dp"-->
-<!--                android:text="Give space for children to express themselves naturally."-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_instruction5"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="36dp"-->
-<!--                android:layout_marginEnd="36dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="12dp"-->
-<!--                android:text="Don't force your child to smile or pose in a certain way, let them express themselves according to their own personality."-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="18sp" />-->
-<!--        </LinearLayout>-->
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_instructions"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="18dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_continue"
             app:layout_constraintDimensionRatio="H,3:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_rectangle" />
 
         <Button
             android:id="@+id/btn_continue"
