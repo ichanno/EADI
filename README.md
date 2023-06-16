@@ -50,8 +50,6 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Application
 
-![Screenshot]()
-
 <p align="center">
   <img src="assets/splash.png" height="500"></img>&nbsp; &nbsp;<img src="assets/home.png" height="500">&nbsp; &nbsp;<img src="assets/preview.png" height="500">
 </p>
