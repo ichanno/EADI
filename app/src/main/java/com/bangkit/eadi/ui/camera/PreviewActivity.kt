@@ -6,6 +6,7 @@ import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.exifinterface.media.ExifInterface
 import com.bangkit.eadi.databinding.ActivityPreviewBinding
@@ -21,14 +22,8 @@ class PreviewActivity : AppCompatActivity() {
         binding = ActivityPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val isCameraPhoto = intent.getBooleanExtra("isCameraPhoto", false)
-        if (isCameraPhoto) {
-            val photoUriString = intent.getStringExtra("photoUri")
-            imageUri = Uri.parse(photoUriString)
-        } else {
-            val imageUriString = intent.getStringExtra("imageUri")
-            imageUri = Uri.parse(imageUriString)
-        }
+        val imageUriString = intent.getStringExtra("imageUri")
+        imageUri = Uri.parse(imageUriString)
 
         loadImage()
 
@@ -43,7 +38,9 @@ class PreviewActivity : AppCompatActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun loadImage() {
+        Log.d("PreviewActivity", "Image URI: $imageUri")
         try {
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
             val rotatedBitmap = rotateBitmap(bitmap, getRotationDegrees(imageUri))

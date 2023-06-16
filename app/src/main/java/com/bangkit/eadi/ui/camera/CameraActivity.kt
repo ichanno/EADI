@@ -73,10 +73,11 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val photoUri = outputFileResults.savedUri ?: Uri.fromFile(photoFile)
                     val intent = Intent(this@CameraActivity, PreviewActivity::class.java).apply {
-                        putExtra("photoUri", photoUri.toString())
+                        putExtra("photoUri", photoUri.toString()) // Convert Uri to string
                         putExtra("isCameraPhoto", true)
                     }
                     startActivity(intent)
+                    finish() // Finish the Camera Activity after starting the Preview Activity
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -92,34 +93,47 @@ class CameraActivity : AppCompatActivity() {
 
 
     private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        if (allPermissionsGranted()) {
+            val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
-        cameraProviderFuture.addListener({
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-            val preview = Preview.Builder()
-                .build()
-                .also {
-                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+            cameraProviderFuture.addListener({
+                val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+
+                val cameraSelector = CameraSelector.Builder()
+                    .requireLensFacing(CameraSelector.LENS_FACING_BACK) // Default to back camera
+                    .build()
+
+                val preview = Preview.Builder()
+                    .build()
+                    .also {
+                        it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+                    }
+
+                imageCapture = ImageCapture.Builder().build()
+
+                try {
+                    cameraProvider.unbindAll()
+                    cameraProvider.bindToLifecycle(
+                        this,
+                        cameraSelector,
+                        preview,
+                        imageCapture
+                    )
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        this@CameraActivity,
+                        getString(R.string.failed_to_open_camera),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-
-            imageCapture = ImageCapture.Builder().build()
-
-            try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
-                    this,
-                    cameraSelector,
-                    preview,
-                    imageCapture
-                )
-            } catch (e: Exception) {
-                Toast.makeText(
-                    this@CameraActivity,
-                    getString(R.string.failed_to_open_camera),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }, ContextCompat.getMainExecutor(this))
+            }, ContextCompat.getMainExecutor(this))
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                REQUIRED_PERMISSIONS,
+                REQUEST_CODE_PERMISSIONS
+            )
+        }
     }
 
 
@@ -148,5 +162,6 @@ class CameraActivity : AppCompatActivity() {
     companion object {
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_CAMERA = 123
     }
 }

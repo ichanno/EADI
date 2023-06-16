@@ -46,21 +46,10 @@ class CameraSelectionActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        binding.llCamera.setOnClickListener {
-            startCamera()
-        }
-
         binding.llGallery.setOnClickListener {
             startGallery()
         }
 
-    }
-
-    private fun startCamera() {
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            type = "image/*"
-        }
-        launcherIntentCamera.launch(intent)
     }
 
     private fun startGallery() {
@@ -77,27 +66,6 @@ class CameraSelectionActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (!allPermissionsGranted()) {
-                Toast.makeText(
-                    this,
-                    getString(R.string.failed_to_get_permission),
-                    Toast.LENGTH_SHORT
-                ).show()
-                finish()
-            }
-        }
-    }
-
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
 
     @Suppress("DEPRECATION")
     override fun onSupportNavigateUp(): Boolean {
@@ -105,8 +73,4 @@ class CameraSelectionActivity : AppCompatActivity() {
         return true
     }
 
-    companion object {
-        private const val REQUEST_CODE_PERMISSIONS = 10
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-    }
 }
