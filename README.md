@@ -59,7 +59,6 @@ _Below is an example of how you can instruct your audience on installing and set
 - Android 7.0 (lollipop) or newest
 - Internet Connection
 - Camera Access
-- 
 
 ## Other project
 You can also looking up our other repository in this project by this [link](https://github.com/armans28/EADI-Project).
